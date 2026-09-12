@@ -27,8 +27,10 @@ loop do
     puts "1. List all contacts"
     puts "2. Add a new contact"
     puts "0. Exit"
-
+    puts ""
     print "Make a selection: "
+    puts ""
+
     selection = gets.chomp.to_i #forcing it to be an integer
 
     if selection == 1
@@ -38,6 +40,7 @@ loop do
         end
 
     elsif selection == 2
+        puts ""
         print "Enter name: "
         name = gets.chomp
         print "Enter phone number: "
@@ -46,6 +49,7 @@ loop do
         email = gets.chomp
         contact_book << { "name" => name, "phone" => phone, "email" => email }
         save_contact_book(contact_book)
+        puts ""
         puts "New contact added successfully!!"
 
     elsif selection == 0
