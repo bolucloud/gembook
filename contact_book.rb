@@ -10,3 +10,7 @@ def load_contact_book
         []
     end
 end
+
+def save_contact_book(contact_book_file)
+    File.write(FILE, JSON.pretty_generate(contact_book_file))
+end
