@@ -25,6 +25,7 @@ loop do
     puts "----------------------------"
     puts ""
     puts "1. List all contacts"
+    puts "2. Add a new contact"
     puts "0. Exit"
 
     print "Make a selection: "
@@ -33,8 +34,19 @@ loop do
     if selection == 1
         puts "Showing all contacts: "
         contact_book.each_with_index do |contact, index|
-            puts "#{index + 1}. Name: #{contact['name']}, Email: #{contact['email']}, Phone: #{contact['phone']}"
+            puts "#{index + 1}. Name: #{contact['name']}, Phone: #{contact['phone']}, Email: #{contact['email']}"
         end
+
+    elsif selection == 2
+        print "Enter name: "
+        name = gets.chomp
+        print "Enter phone number: "
+        phone = gets.chomp
+        print "Enter email: "
+        email = gets.chomp
+        contact_book << { "name" => name, "phone" => phone, "email" => email }
+        save_contact_book(contact_book)
+        puts "New contact added successfully!!"
 
     elsif selection == 0
         puts "Leaving Gembooks. Goodbye!"
