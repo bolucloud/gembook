@@ -18,7 +18,12 @@ end
 contact_book = load_contact_book
 
 loop do
-    puts "Gembooks Menu"
+    puts ""
+    puts "----------------------------"
+    puts "Welcome to Gembooks!"
+    puts "PLEASE SELECT AN OPTION: "
+    puts "----------------------------"
+    puts ""
     puts "1. List all contacts"
     puts "0. Exit"
 
