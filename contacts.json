@@ -1,12 +1,23 @@
 [
   {
+    "id": 1,
     "name": "John Doe",
-    "phone": "123-456-7890",
-    "email": "john.doe@example.com"
-  },
-  {
-    "name": "spider man",
-    "phone": "4354456654",
-    "email": "spideyguy@gmail.com"
+    "phone": {
+      "mobile": "123-456-7890",
+      "home": null,
+      "work": null
+    },
+    "email": "john.doe@example.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78201"
+    },
+    "birthday": "1990-05-14",
+    "tags": ["friend", "work"],
+    "favorite": false,
+    "created_at": "2026-09-12T21:51:00",
+    "updated_at": "2026-09-12T21:51:00"
   }
 ]
