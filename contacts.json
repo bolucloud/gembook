@@ -1,10 +1,23 @@
 [
   {
     "id": 1,
-    "name": "Jack Black",
+    "name": "John Doe",
     "phone": {
-      "mobile": "987-654-3210"
+      "mobile": "123-456-7890",
+      "home": null,
+      "work": null
     },
-    "email": "jack.black@outlook.com"
+    "email": "john.doe@example.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78201"
+    },
+    "birthday": "1990-05-14",
+    "tags": ["friend", "work"],
+    "favorite": false,
+    "created_at": "2026-09-12T21:51:00",
+    "updated_at": "2026-09-12T21:51:00"
   }
 ]
