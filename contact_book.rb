@@ -34,7 +34,7 @@ loop do
     print "Make a selection: "
     puts ""
 
-    selection = gets.chomp.to_i #forcing it to be an integer
+    selection = gets.chomp.to_i
 
     if selection == 1
         puts "Showing all contacts: "
@@ -50,15 +50,83 @@ loop do
         phone = gets.chomp
         print "Enter email: "
         email = gets.chomp
+
         contact_book << { "name" => name, "phone" => phone, "email" => email }
         save_contact_book(contact_book)
+
         puts ""
         puts "New contact added successfully!!"
+
+    elsif selection == 3
+        puts "Which contact would you like to edit?"
+        contact_book.each_with_index do |contact, index|
+            puts "#{index + 1}. #{contact['name']}"
+        end
+
+        print "Enter number: "
+        idx = gets.chomp.to_i - 1
+
+        if idx < 0 || idx >= contact_book.length
+            puts "Invalid selection."
+        else
+            contact = contact_book[idx]
+
+            print "New name (leave blank to keep '#{contact['name']}'): "
+            new_name = gets.chomp
+            contact['name'] = new_name unless new_name.empty?
+
+            print "New phone (leave blank to keep '#{contact['phone']}'): "
+            new_phone = gets.chomp
+            contact['phone'] = new_phone unless new_phone.empty?
+
+            print "New email (leave blank to keep '#{contact['email']}'): "
+            new_email = gets.chomp
+            contact['email'] = new_email unless new_email.empty?
+
+            save_contact_book(contact_book)
+            puts "Contact updated!"
+        end
+
+    elsif selection == 4
+        puts "Which contact would you like to delete?"
+        contact_book.each_with_index do |contact, index|
+            puts "#{index + 1}. #{contact['name']}"
+        end
+
+        print "Enter number: "
+        idx = gets.chomp.to_i - 1
+
+        if idx < 0 || idx >= contact_book.length
+            puts "Invalid selection."
+        else
+            deleted = contact_book.delete_at(idx)
+            save_contact_book(contact_book)
+            puts "Deleted contact: #{deleted['name']}"
+        end
+
+    elsif selection == 5
+        print "Enter search term (name, phone, or email): "
+        term = gets.chomp.downcase
+
+        results = contact_book.select do |contact|
+            contact['name'].downcase.include?(term) ||
+            contact['phone'].downcase.include?(term) ||
+            contact['email'].downcase.include?(term)
+        end
+
+        if results.empty?
+            puts "No contacts found."
+        else
+            puts "Search results:"
+            results.each_with_index do |contact, index|
+                puts "#{index + 1}. Name: #{contact['name']}, Phone: #{contact['phone']}, Email: #{contact['email']}"
+            end
+        end
 
     elsif selection == 0
         puts "Leaving Gembooks. Goodbye!"
         break
-    
+
     else
         puts "Invalid selection. Please select another option"
     end
