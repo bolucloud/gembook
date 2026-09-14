@@ -55,6 +55,7 @@ loop do
             puts "   Address: #{contact['address']['street']}, #{contact['address']['city']}, #{contact['address']['state']} #{contact['address']['zip']}"
             puts "   Birthday: #{contact['birthday']}"
             puts "   Tags: #{contact['tags'].join(', ')}"
+            puts "   Notes: #{contact['notes']}" if contact['notes'] && !contact['notes'].empty?
             puts ""
         end
 
@@ -87,6 +88,9 @@ loop do
         print "Tags (comma separated): "
         tags = gets.chomp.split(",").map(&:strip)
 
+        print "Additional notes (optional): "
+        notes = gets.chomp
+
         new_contact = {
             "id" => next_id(contact_book),
             "name" => name,
@@ -104,6 +108,7 @@ loop do
             },
             "birthday" => birthday,
             "tags" => tags,
+            "notes" => notes,
             "favorite" => false,
             "created_at" => Time.now.iso8601,
             "updated_at" => Time.now.iso8601
@@ -165,6 +170,10 @@ loop do
             new_tags = gets.chomp
             contact['tags'] = new_tags.split(",").map(&:strip) unless new_tags.empty?
 
+            print "New notes (leave blank to keep current): "
+            new_notes = gets.chomp
+            contact['notes'] = new_notes unless new_notes.empty?
+
             contact["updated_at"] = Time.now.iso8601
 
             save_contact_book(contact_book)
@@ -189,7 +198,7 @@ loop do
         end
 
     elsif selection == 5
-        print "Enter search term (name, phone, email, city, tag): "
+        print "Enter search term (name, phone, email, city, tag, notes): "
         term = gets.chomp.downcase
 
         results = contact_book.select do |contact|
@@ -197,7 +206,8 @@ loop do
             contact['phone']['mobile'].downcase.include?(term) ||
             contact['email'].downcase.include?(term) ||
             contact['address']['city'].downcase.include?(term) ||
-            contact['tags'].any? { |t| t.downcase.include?(term) }
+            contact['tags'].any? { |t| t.downcase.include?(term) } ||
+            (contact['notes'] && contact['notes'].downcase.include?(term))
         end
 
         if results.empty?
@@ -210,13 +220,14 @@ loop do
                 puts "   Email: #{contact['email']}"
                 puts "   City: #{contact['address']['city']}"
                 puts "   Tags: #{contact['tags'].join(', ')}"
+                puts "   Notes: #{contact['notes']}" if contact['notes'] && !contact['notes'].empty?
                 puts ""
             end
         end
 
     elsif selection == 6
         CSV.open("contacts_export.csv", "w") do |csv|
-            csv << ["id", "name", "mobile", "email", "street", "city", "state", "zip", "birthday", "tags"]
+            csv << ["id", "name", "mobile", "email", "street", "city", "state", "zip", "birthday", "tags", "notes"]
             contact_book.each do |c|
                 csv << [
                     c["id"],
@@ -228,7 +239,8 @@ loop do
                     c["address"]["state"],
                     c["address"]["zip"],
                     c["birthday"],
-                    c["tags"].join(";")
+                    c["tags"].join(";"),
+                    c["notes"]
                 ]
             end
         end
@@ -254,6 +266,7 @@ loop do
                     },
                     "birthday" => row["birthday"],
                     "tags" => row["tags"].split(";"),
+                    "notes" => row["notes"] || "",
                     "favorite" => false,
                     "created_at" => Time.now.iso8601,
                     "updated_at" => Time.now.iso8601
