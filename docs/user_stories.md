@@ -1,5 +1,7 @@
 # User Stories
 
+User stories and detailed descriptions are located here https://github.com/users/bolucloud/projects/2 
+
 - Create Github repository
 - Create kanban project in Github
 - Implement delete a contact logic	https://github.com/bolucloud/gembook/issues/8
