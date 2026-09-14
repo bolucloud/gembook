@@ -1,6 +1,7 @@
 require "json"
 require "time"
 require "csv"
+require "date"
 
 FILE = "contacts.json"
 
@@ -22,6 +23,31 @@ def next_id(contact_book)
     contact_book.map { |c| c["id"] }.max + 1
 end
 
+def age_from_birthday(bday)
+    return nil if bday.nil? || bday.empty?
+    dob = Date.parse(bday)
+    now = Date.today
+    age = now.year - dob.year
+    age -= 1 if Date.new(now.year, dob.month, dob.day) > now
+    age
+end
+
+def upcoming_birthdays(contact_book)
+    today = Date.today
+    next_30 = today + 30
+
+    contact_book.select do |c|
+        next unless c["birthday"] && !c["birthday"].empty?
+        bday = Date.parse(c["birthday"])
+        upcoming = Date.new(today.year, bday.month, bday.day)
+
+        # If birthday already passed this year, check next year
+        upcoming = Date.new(today.year + 1, bday.month, bday.day) if upcoming < today
+
+        upcoming <= next_30
+    end
+end
+
 contact_book = load_contact_book
 
 loop do
@@ -39,6 +65,7 @@ loop do
     puts "6. Export contacts to CSV"
     puts "7. Import contacts from CSV"
     puts "8. Sort contacts"
+    puts "9. Upcoming birthdays"
     puts "0. Exit"
     puts ""
     print "Make a selection: "
@@ -54,6 +81,8 @@ loop do
             puts "   Email: #{contact['email']}"
             puts "   Address: #{contact['address']['street']}, #{contact['address']['city']}, #{contact['address']['state']} #{contact['address']['zip']}"
             puts "   Birthday: #{contact['birthday']}"
+            age = age_from_birthday(contact['birthday'])
+            puts "   Age: #{age}" if age
             puts "   Tags: #{contact['tags'].join(', ')}"
             puts ""
         end
@@ -189,7 +218,7 @@ loop do
         end
 
     elsif selection == 5
-        print "Enter search term (name, phone, email, city, tag): "
+        print "Enter search term (name, phone, email, city, tag, birthday): "
         term = gets.chomp.downcase
 
         results = contact_book.select do |contact|
@@ -197,7 +226,8 @@ loop do
             contact['phone']['mobile'].downcase.include?(term) ||
             contact['email'].downcase.include?(term) ||
             contact['address']['city'].downcase.include?(term) ||
-            contact['tags'].any? { |t| t.downcase.include?(term) }
+            contact['tags'].any? { |t| t.downcase.include?(term) } ||
+            contact['birthday'].downcase.include?(term)
         end
 
         if results.empty?
@@ -209,6 +239,9 @@ loop do
                 puts "   Mobile: #{contact['phone']['mobile']}"
                 puts "   Email: #{contact['email']}"
                 puts "   City: #{contact['address']['city']}"
+                puts "   Birthday: #{contact['birthday']}"
+                age = age_from_birthday(contact['birthday'])
+                puts "   Age: #{age}" if age
                 puts "   Tags: #{contact['tags'].join(', ')}"
                 puts ""
             end
@@ -290,6 +323,22 @@ loop do
         end
 
         save_contact_book(contact_book)
+
+    elsif selection == 9
+        puts "Upcoming birthdays (next 30 days):"
+        upcoming = upcoming_birthdays(contact_book)
+
+        if upcoming.empty?
+            puts "No upcoming birthdays."
+        else
+            upcoming.each do |c|
+                bday = Date.parse(c["birthday"])
+                next_bday = Date.new(Date.today.year, bday.month, bday.day)
+                next_bday = Date.new(Date.today.year + 1, bday.month, bday.day) if next_bday < Date.today
+
+                puts "#{c['name']} — #{c['birthday']} (Next: #{next_bday})"
+            end
+        end
 
     elsif selection == 0
         puts "Leaving Gembooks. Goodbye!"
