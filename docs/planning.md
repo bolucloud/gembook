@@ -1,6 +1,6 @@
 # Planning
 
-Our team will build an app called ##Gembooks. We plan on performing both individual and pair programming on some advanced features.
+Our team will build an app called **Gembooks**. We plan on performing both individual and pair programming on some advanced features.
 
 ## Features
 - View list of contacts
