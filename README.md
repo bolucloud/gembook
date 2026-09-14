@@ -9,7 +9,7 @@ cd gembook
 
 Run the program in your terminal:
 
-ruby contact_book.rb
+`ruby contact_book.rb`
 
 This will launch the interactive menu where you can add, edit, delete, search, sort, and export/import contacts.
 
