@@ -1,6 +1,7 @@
 require "json"
 require "time"
 require "csv"
+require "date"
 
 FILE = "contacts.json"
 
@@ -39,6 +40,8 @@ loop do
     puts "6. Export contacts to CSV"
     puts "7. Import contacts from CSV"
     puts "8. Sort contacts"
+    puts "9. List favorite contacts"
+    puts "10. Show today's birthdays"
     puts "0. Exit"
     puts ""
     print "Make a selection: "
@@ -55,6 +58,7 @@ loop do
             puts "   Address: #{contact['address']['street']}, #{contact['address']['city']}, #{contact['address']['state']} #{contact['address']['zip']}"
             puts "   Birthday: #{contact['birthday']}"
             puts "   Tags: #{contact['tags'].join(', ')}"
+            puts "   Favorite: #{contact['favorite'] ? 'Yes' : 'No'}"
             puts ""
         end
 
@@ -165,6 +169,11 @@ loop do
             new_tags = gets.chomp
             contact['tags'] = new_tags.split(",").map(&:strip) unless new_tags.empty?
 
+            print "Mark as favorite? (y/n, leave blank to keep current): "
+            fav = gets.chomp.downcase
+            contact["favorite"] = true if fav == "y"
+            contact["favorite"] = false if fav == "n"
+
             contact["updated_at"] = Time.now.iso8601
 
             save_contact_book(contact_book)
@@ -232,70 +241,4 @@ loop do
                 ]
             end
         end
-        puts "Contacts exported to contacts_export.csv!"
-
-    elsif selection == 7
-        if File.exist?("contacts_import.csv")
-            CSV.foreach("contacts_import.csv", headers: true) do |row|
-                contact_book << {
-                    "id" => next_id(contact_book),
-                    "name" => row["name"],
-                    "phone" => {
-                        "mobile" => row["mobile"],
-                        "home" => nil,
-                        "work" => nil
-                    },
-                    "email" => row["email"],
-                    "address" => {
-                        "street" => row["street"],
-                        "city" => row["city"],
-                        "state" => row["state"],
-                        "zip" => row["zip"]
-                    },
-                    "birthday" => row["birthday"],
-                    "tags" => row["tags"].split(";"),
-                    "favorite" => false,
-                    "created_at" => Time.now.iso8601,
-                    "updated_at" => Time.now.iso8601
-                }
-            end
-
-            save_contact_book(contact_book)
-            puts "Contacts imported successfully!"
-        else
-            puts "contacts_import.csv not found!"
-        end
-
-    elsif selection == 8
-        puts ""
-        puts "Sort contacts by:"
-        puts "1. Name (A–Z)"
-        puts "2. City (A–Z)"
-        puts "3. Birthday (oldest → youngest)"
-        print "Choose: "
-        sort_choice = gets.chomp.to_i
-
-        case sort_choice
-        when 1
-            contact_book.sort_by! { |c| c["name"].downcase }
-            puts "Sorted by name!"
-        when 2
-            contact_book.sort_by! { |c| c["address"]["city"].downcase }
-            puts "Sorted by city!"
-        when 3
-            contact_book.sort_by! { |c| Date.parse(c["birthday"]) }
-            puts "Sorted by birthday!"
-        else
-            puts "Invalid sort option."
-        end
-
-        save_contact_book(contact_book)
-
-    elsif selection == 0
-        puts "Leaving Gembooks. Goodbye!"
-        break
-
-    else
-        puts "Invalid selection. Please select another option"
-    end
-end
+        puts "Contacts exported
