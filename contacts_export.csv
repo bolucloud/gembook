@@ -1,0 +1,3 @@
+id,name,mobile,email,street,city,state,zip,birthday,tags
+2,Benjamin Cerna,210-123-4567,007@tamu.edu,Kyle Field,College Station,TX,00000,1869-08-01,""
+1,John Doe,123-456-7890,john.doe@example.com,123 Main St,San Antonio,TX,78201,1990-05-14,friend;work

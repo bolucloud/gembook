@@ -1,0 +1,47 @@
+[
+  {
+    "id": 2,
+    "name": "Benjamin Cerna",
+    "phone": {
+      "mobile": "210-123-4567",
+      "home": null,
+      "work": null
+    },
+    "email": "007@tamu.edu",
+    "address": {
+      "street": "Kyle Field",
+      "city": "College Station",
+      "state": "TX",
+      "zip": "00000"
+    },
+    "birthday": "1869-08-01",
+    "tags": [],
+    "favorite": false,
+    "created_at": "2026-09-14T22:41:03-05:00",
+    "updated_at": "2026-09-14T22:42:30-05:00"
+  },
+  {
+    "id": 1,
+    "name": "John Doe",
+    "phone": {
+      "mobile": "123-456-7890",
+      "home": null,
+      "work": null
+    },
+    "email": "john.doe@example.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78201"
+    },
+    "birthday": "1990-05-14",
+    "tags": [
+      "friend",
+      "work"
+    ],
+    "favorite": false,
+    "created_at": "2026-09-12T21:51:00",
+    "updated_at": "2026-09-12T21:51:00"
+  }
+]
