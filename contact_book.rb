@@ -5,13 +5,15 @@ require "date"
 
 FILE = "contacts.json"
 
-def load_contact_book
-  if File.exist?(FILE)
-    contact_book_file = File.read(FILE)
-    JSON.parse(contact_book_file)
-  else
-    []
+def initialize_contact_file
+  unless File.exist?(FILE)
+    File.write(FILE, JSON.pretty_generate([]))
   end
+end
+
+def load_contact_book
+  contact_book_file = File.read(FILE)
+  JSON.parse(contact_book_file)
 end
 
 def save_contact_book(contact_book_file)
@@ -23,6 +25,8 @@ def next_id(contact_book)
   contact_book.map { |c| c["id"] }.max + 1
 end
 
+# Ensure file exists BEFORE loading
+initialize_contact_file
 contact_book = load_contact_book
 
 loop do
@@ -40,8 +44,6 @@ loop do
   puts "6. Export contacts to CSV"
   puts "7. Import contacts from CSV"
   puts "8. Sort contacts"
-  puts "9. List favorite contacts"
-  puts "10. Show today's birthdays"
   puts "0. Exit"
   puts ""
   print "Make a selection: "
@@ -58,7 +60,6 @@ loop do
       puts "   Address: #{contact['address']['street']}, #{contact['address']['city']}, #{contact['address']['state']} #{contact['address']['zip']}"
       puts "   Birthday: #{contact['birthday']}"
       puts "   Tags: #{contact['tags'].join(', ')}"
-      puts "   Favorite: #{contact['favorite'] ? 'Yes' : 'No'}"
       puts ""
     end
 
@@ -169,11 +170,6 @@ loop do
       new_tags = gets.chomp
       contact['tags'] = new_tags.split(",").map(&:strip) unless new_tags.empty?
 
-      print "Mark as favorite? (y/n, leave blank to keep current): "
-      fav = gets.chomp.downcase
-      contact["favorite"] = true if fav == "y"
-      contact["favorite"] = false if fav == "n"
-
       contact["updated_at"] = Time.now.iso8601
 
       save_contact_book(contact_book)
@@ -241,7 +237,6 @@ loop do
         ]
       end
     end
-
     puts "Contacts exported to contacts_export.csv!"
 
   elsif selection == 7
@@ -300,32 +295,6 @@ loop do
     end
 
     save_contact_book(contact_book)
-
-  elsif selection == 9
-    favorites = contact_book.select { |c| c["favorite"] }
-    if favorites.empty?
-      puts "No favorite contacts."
-    else
-      puts "Favorite contacts:"
-      favorites.each_with_index do |contact, index|
-        puts "#{index + 1}. #{contact['name']} (ID: #{contact['id']})"
-      end
-    end
-
-  elsif selection == 10
-    today = Date.today.strftime("%m-%d")
-    birthdays = contact_book.select do |c|
-      Date.parse(c["birthday"]).strftime("%m-%d") == today
-    end
-
-    if birthdays.empty?
-      puts "No birthdays today."
-    else
-      puts "Today's birthdays:"
-      birthdays.each do |c|
-        puts "#{c['name']} (#{c['birthday']})"
-      end
-    end
 
   elsif selection == 0
     puts "Leaving Gembooks. Goodbye!"
