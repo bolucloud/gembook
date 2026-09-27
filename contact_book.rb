@@ -5,6 +5,12 @@ require "date"
 
 FILE = "contacts.json"
 
+def initialize_contact_file
+  unless File.exist?(FILE)
+    File.write(FILE, JSON.pretty_generate([]))
+  end
+end
+
 def load_contact_book
   if File.exist?(FILE)
     JSON.parse(File.read(FILE))
