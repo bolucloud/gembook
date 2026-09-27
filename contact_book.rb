@@ -51,18 +51,18 @@ loop do
 
   selection = gets.chomp.to_i
 
-    if selection == 1
-        puts "Showing all contacts: "
-        contact_book.each_with_index do |contact, index|
-            puts "#{index + 1}. #{contact['name']} (ID: #{contact['id']})"
-            puts "   Mobile: #{contact['phone']['mobile']}"
-            puts "   Email: #{contact['email']}"
-            puts "   Address: #{contact['address']['street']}, #{contact['address']['city']}, #{contact['address']['state']} #{contact['address']['zip']}"
-            puts "   Birthday: #{contact['birthday']}"
-            puts "   Tags: #{contact['tags'].join(', ')}"
+  if selection == 1
+    puts "Showing all contacts: "
+    contact_book.each_with_index do |contact, index|
+      puts "#{index + 1}. #{contact['name']} (ID: #{contact['id']})"
+      puts "   Mobile: #{contact['phone']['mobile']}"
+      puts "   Email: #{contact['email']}"
+      puts "   Address: #{contact['address']['street']}, #{contact['address']['city']}, #{contact['address']['state']} #{contact['address']['zip']}"
+      puts "   Birthday: #{contact['birthday']}"
+      puts "   Tags: #{contact['tags'].join(', ')}"
             puts "   Notes: #{contact['notes']}" if contact['notes'] && !contact['notes'].empty?
-            puts ""
-        end
+      puts ""
+    end
 
     elsif selection == 2
         puts ""
@@ -215,20 +215,20 @@ loop do
             (contact['notes'] && contact['notes'].downcase.include?(term))
         end
 
-        if results.empty?
-            puts "No contacts found."
-        else
-            puts "Search results:"
-            results.each_with_index do |contact, index|
-                puts "#{index + 1}. #{contact['name']} (ID: #{contact['id']})"
-                puts "   Mobile: #{contact['phone']['mobile']}"
-                puts "   Email: #{contact['email']}"
-                puts "   City: #{contact['address']['city']}"
-                puts "   Tags: #{contact['tags'].join(', ')}"
-                puts "   Notes: #{contact['notes']}" if contact['notes'] && !contact['notes'].empty?
-                puts ""
-            end
-        end
+    if results.empty?
+      puts "No contacts found."
+    else
+      puts "Search results:"
+      results.each_with_index do |contact, index|
+        puts "#{index + 1}. #{contact['name']} (ID: #{contact['id']})"
+        puts "   Mobile: #{contact['phone']['mobile']}"
+        puts "   Email: #{contact['email']}"
+        puts "   City: #{contact['address']['city']}"
+        puts "   Tags: #{contact['tags'].join(', ')}"
+        puts "   Notes: #{contact['notes']}" if contact['notes'] && !contact['notes'].empty?
+        puts ""
+      end
+    end
 
     elsif selection == 6
         CSV.open("contacts_export.csv", "w") do |csv|
