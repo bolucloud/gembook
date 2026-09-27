@@ -40,5 +40,26 @@
     "favorite": false,
     "created_at": "2026-09-12T21:51:00",
     "updated_at": "2026-09-12T21:51:00"
+  },
+  {
+    "id": 1,
+    "name": "Jone Steele",
+    "phone": {
+      "mobile": "123-777-7890",
+      "home": null,
+      "work": null
+    },
+    "email": "jone.steele@example.com",
+    "address": {
+      "street": "123 Cotton St",
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "78551"
+    },
+    "birthday": "1990-09-27",
+    "tags": [ "friend", "work" ],
+    "favorite": false,
+    "created_at": "2026-09-12T21:51:00",
+    "updated_at": "2026-09-12T21:51:00"
   }
 ]
