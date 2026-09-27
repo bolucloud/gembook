@@ -270,10 +270,17 @@ loop do
 
     if idx < 0 || idx >= contact_book.length
       puts "Invalid selection."
-    else
-      deleted = contact_book.delete_at(idx)
-      save_contact_book(contact_book)
-      puts "Deleted contact: #{deleted['name']}"
+      next
+    end 
+
+    puts "Are you sure you want to delete #{contact_book[idx]['name']}? (y/n)"
+    confirmation = gets.chomp.downcase
+    if confirmation == 'y' || confirmation == 'yes'
+        deleted = contact_book.delete_at(idx)
+        save_contact_book(contact_book)
+        puts "Deleted #{deleted['name']} from gembook"
+    else 
+        puts "Deletion cancelled."
     end
 
   # ----------------------------
