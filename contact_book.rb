@@ -59,6 +59,10 @@ def todays_birthday(contact_book)
     end
 end
 
+def set_contact_count(count)
+    count == 1 ? "1 contact" : "#{count} contacts"
+end
+
 contact_book = load_contact_book
 
 
@@ -101,6 +105,7 @@ loop do
   # ----------------------------
   if selection == 1
     puts "Showing all contacts:"
+    puts "===== Your gembook has #{set_contact_count(contact_book.length)} ====="
     contact_book.each_with_index do |contact, index|
       puts "#{index + 1}. #{contact['name']} (ID: #{contact['id']})"
       puts "   Mobile: #{contact['phone']['mobile']}"
