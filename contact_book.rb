@@ -50,7 +50,28 @@ def upcoming_birthdays(contact_book)
   end
 end
 
+def todays_birthday(contact_book)
+    today = Date.today
+    contact_book.select do |c|
+        next false if c["birthday"].empty?
+        bday = Date.parse(c["birthday"])
+        bday.month == today.month && bday.day == today.day
+    end
+end
+
 contact_book = load_contact_book
+
+
+todays_bdays = todays_birthday(contact_book)
+if todays_bdays.any?
+  puts "++++++++++++++++++++++++++"  
+  puts " 🎂 Today's Birthdays! 🎂 "
+  puts "++++++++++++++++++++++++++"
+  todays_bdays.each do |c|
+    puts "#{c['name']} — #{c['birthday']}"
+  end
+  puts "++++++++++++++++++++++++++"  
+end
 
 loop do
   puts ""
