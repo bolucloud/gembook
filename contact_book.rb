@@ -397,7 +397,7 @@ loop do
     puts "Sort contacts by:"
     puts "1. Name (A–Z)"
     puts "2. City (A–Z)"
-    puts "3. Birthday (oldest → youngest)"
+    # puts "3. Birthday (oldest → youngest)"
     print "Choose: "
     sort_choice = gets.chomp.to_i
 
@@ -408,9 +408,9 @@ loop do
     when 2
       contact_book.sort_by! { |c| c["address"]["city"].downcase }
       puts "Sorted by city!"
-    when 3
-      contact_book.sort_by! { |c| Date.parse(c["birthday"]) }
-      puts "Sorted by birthday!"
+    # when 3
+    #   contact_book.sort_by! { |c| Date.parse(c["birthday"]) }
+    #   puts "Sorted by birthday!"
     else
       puts "Invalid sort option."
     end
