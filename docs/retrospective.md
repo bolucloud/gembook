@@ -27,6 +27,7 @@
 - A graphical user interface
 - Cloud based syncing to run the application and store data on multiple devices
 - Authentication to make this a multi user experience
+- Enforce consistent formatting for phone numbers for all contacts
 
 ### Conclusion
 The gembooks app met its original goal. The goal at the onset was simple, build a working terminal app with Ruby that lists, adds, edits, deletes, edits stores contact data safely. Test suites were also written to ensure that the application's functionality works as expected. Anybody that is able to clone this repo can run the application successfully, which makes this a success.
