@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-Gembook
-A terminal-based contact book application that allows users to store, search, delete, and update personal contact information.
-=======
 Gembooks – Ruby CLI Contact Manager
 Gembooks is a Ruby-based command-line contact manager designed to store, organize, search, sort, and export contact information. It uses JSON for persistent storage, supports CSV import/export, and includes birthday reminders and full RSpec test coverage.
 
