@@ -1,14 +1,31 @@
 # Gembook
 
-Gembook is a terminal-based address book written in Ruby. This application stores names, primary addresses, phone numbers, emails, birthdays, and notes of your list of contacts, all in a local JSON file you own. The application also allows for exporting of your contact data for backup and importing contact data for restoring backups.
+Gembooks is a Ruby-based command-line contact manager designed to store, organize, search, sort, and export contact information. It uses JSON for persistent storage, supports CSV import/export, and includes birthday reminders and full RSpec test coverage.
 
+This project reflects real debugging, refactoring, and testing experience — including handling malformed data, fixing sorting logic, sanitizing input, and validating the entire system with automated tests.
+
+--
 ## Table of Contents
+- [Project structure](#project-structure)
 - [Installation and setup](#installation)
 - [Running the app](#running-the-app)
 - [Running tests and coverage report](#running-the-tests)
 - [Features](#features)
 - [Limitations](#limitations)
 - [Team Members](#team-members)
+
+--
+## Project Structure
+Code
+gembooks/
+│
+├── contact_book.rb        # Main CLI application
+├── contacts.json          # Persistent contact storage
+├── contacts_export.csv    # Generated CSV file (optional)
+├── spec/                  # RSpec tests
+│   ├── contact_book_spec.rb
+│   └── other specs...
+└── README.md              # Project documentation
 
 --
 ### Installation
@@ -75,6 +92,11 @@ or
 ```bash
 rspec spec/search_spec.rb
 ```
+Expected output:
+
+Code
+13 examples, 0 failures
+This confirms the application is stable and all core functions behave correctly.
 
 --
 ### Features
@@ -82,13 +104,14 @@ rspec spec/search_spec.rb
 - **Add contact** - add name, address, phone number, birthday, and notes of a new contact
 - **Edit contact** - update any field for an existing contact
 - **Delete contact** - delete a contact from gembook
-- **Search for contact** - search contacts by any attribute
+- **Search for contact** - search contacts by any attribute (name, phone, email, address, tags, notes, or birthday)
 - **Export contacts** - export csv of entire contact list
 - **Import contacts** - import csv consisting of contacts
 - **Sort contacts** - sort list of contacts aphabetically by name or city
 - **Upcoming birthdays** - show contacts with upcoming birthdays in the next 30 days
 - **Birthday reminders** - see today's birthdays on app launch
-- **Local storage** - data stored in a single JSON file
+- **Data storage** - data stored in a single JSON file
+- **Timestamps** - dynamically updating time metadata such as created_at and updated_at
 
 --
 ### Limitations
