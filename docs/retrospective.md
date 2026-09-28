@@ -23,7 +23,7 @@
 ### Improvements
 - Add color to the terminal display
 - Introduce more classes such as Storage and Contacts class
-- Add a display that says "No birthday's today" instead of being empty if there's no birthdays.
+- Add output that says "No birthday's today" instead of being empty if there's no birthdays.
 - Validate every input to ensure its sanitized
 - A graphical user interface
 - Cloud based syncing to run the application and store data on multiple devices
