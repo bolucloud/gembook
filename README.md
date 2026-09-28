@@ -1,4 +1,4 @@
-embooks – Ruby CLI Contact Manager
+Gembooks – Ruby CLI Contact Manager
 Gembooks is a Ruby-based command-line contact manager designed to store, organize, search, sort, and export contact information. It uses JSON for persistent storage, supports CSV import/export, and includes birthday reminders and full RSpec test coverage.
 
 This project reflects real debugging, refactoring, and testing experience — including handling malformed data, fixing sorting logic, sanitizing input, and validating the entire system with automated tests.
