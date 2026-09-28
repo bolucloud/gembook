@@ -4,13 +4,8 @@ Gembook is a terminal-based address book written in Ruby. This application store
 
 ## Table of Contents
 - [Installation and setup](#installation)
-- Running the app
-- Running tests and coverage report
-- Usage
-- Data Storage
-- Testing 
-- Project Structure
-- Troubleshooting
+- [Running the app](#running-the-app)
+- [Running tests and coverage report](#running-the-tests)
 - [Features](#features)
 - [Limitations](#limitations)
 - [Team Members](#team-members)
