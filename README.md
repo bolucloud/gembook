@@ -16,17 +16,17 @@ This project reflects real debugging, refactoring, and testing experience — in
 ## Project Structure
 ```
 gembooks/
-├── docs/                       # documentation
+├── docs/                       # Documentation
 │   ├── backlog.md
 │   └── pairing_log.md
 │   ├── planning.md
 │   └── retrospective.md
 │   ├── user_stories.md
-├── scripts/                    # contact seeding script
+├── scripts/                    # Contact seeding script
 │   ├── contacts.json
 │   └── populate_contacts.rb 
 ├── spec/                       # RSpec tests
-│   ├── contact_book_spec.rb
+│   ├── add_contact_spec.rb
 │   └── other specs...
 ├── contact_book.rb             # Main CLI application
 ├── contacts.json               # Persistent contact storage
