@@ -4,7 +4,6 @@ Gembooks is a Ruby-based command-line contact manager designed to store, organiz
 
 This project reflects real debugging, refactoring, and testing experience — including handling malformed data, fixing sorting logic, sanitizing input, and validating the entire system with automated tests.
 
---
 ## Table of Contents
 - [Project structure](#project-structure)
 - [Installation and setup](#installation)
@@ -14,27 +13,34 @@ This project reflects real debugging, refactoring, and testing experience — in
 - [Limitations](#limitations)
 - [Team Members](#team-members)
 
---
 ## Project Structure
-Code
+```
 gembooks/
-│
-├── contact_book.rb        # Main CLI application
-├── contacts.json          # Persistent contact storage
-├── contacts_export.csv    # Generated CSV file (optional)
-├── spec/                  # RSpec tests
+├── docs/                       # documentation
+│   ├── backlog.md
+│   └── pairing_log.md
+│   ├── planning.md
+│   └── retrospective.md
+│   ├── user_stories.md
+├── scripts/                    # contact seeding script
+│   ├── contacts.json
+│   └── populate_contacts.rb 
+├── spec/                       # RSpec tests
 │   ├── contact_book_spec.rb
 │   └── other specs...
-└── README.md              # Project documentation
+├── contact_book.rb             # Main CLI application
+├── contacts.json               # Persistent contact storage
+├── contacts_export.csv         # Generated CSV file (optional)
+└── README.md                   # Project documentation
+```
 
---
-### Installation
-##### Requirements
+## Installation
+### Requirements
 - **Ruby** 3.2 or higher
 - **RSpec** 
 - **Command line Terminal**
 
-##### Running the App
+### Running the App
 Clone the github repository at https://github.com/bolucloud/gembook
 
 ```bash
@@ -75,7 +81,7 @@ Make a selection:
 ```
 Use the numbers to select an option to continue using the app.
 
-##### Running the Tests
+### Running the Tests
 RSpec needs to be installed to run the tests. Do this by running command
 ```bash
 gem install rspec
@@ -98,8 +104,7 @@ Code
 13 examples, 0 failures
 This confirms the application is stable and all core functions behave correctly.
 
---
-### Features
+## Features
 - **List all contacts** - list all contacts in the gembook
 - **Add contact** - add name, address, phone number, birthday, and notes of a new contact
 - **Edit contact** - update any field for an existing contact
@@ -113,12 +118,10 @@ This confirms the application is stable and all core functions behave correctly.
 - **Data storage** - data stored in a single JSON file
 - **Timestamps** - dynamically updating time metadata such as created_at and updated_at
 
---
-### Limitations
+## Limitations
 - Unable to add more than 1 phone number
 - Unable to add more than a primary address
 
---
-### Team Members
+## Team Members
 - Benjamin Cerna
 - Bolu Owolana
