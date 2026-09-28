@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 1. Core Contact Features
 Implement delete‑a‑contact logic
 Issue: https://github.com/bolucloud/gembook/issues/8  
@@ -30,7 +29,6 @@ Create pairing docs log
 Issue: https://github.com/bolucloud/gembook/issues/14  
 You authored the full pairing log document — a comprehensive record of sessions, decisions, bugs, and progress. This is a major contribution to project transparency and grading.
 
-=======
 Team Contribution Summary
 Bolo — Contributions
 Created logic to automatically generate contacts.json if the file does not exist
