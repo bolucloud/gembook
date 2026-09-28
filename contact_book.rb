@@ -65,7 +65,7 @@ end
 
 contact_book = load_contact_book
 
-
+# load today's birthday on launch
 todays_bdays = todays_birthday(contact_book)
 if todays_bdays.any?
   puts "++++++++++++++++++++++++++"  
