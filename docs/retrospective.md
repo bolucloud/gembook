@@ -9,6 +9,7 @@
 - Building functions such as load_contact_book, age_from_birthday, upcoming_birthdays and next_id was a game changer to help simplify codebase
 - Keeping code modular
 - Planning workflows before coding
+- Working together to build this application
 
 ### What was difficult
 - Finding time to continuously work on the project as two working adults
