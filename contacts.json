@@ -1,67 +1,626 @@
 [
   {
-    "id": 2,
-    "name": "Benjamin Cerna",
-    "phone": {
-      "mobile": "210-123-4567",
-      "home": null,
-      "work": null
-    },
-    "email": "007@tamu.edu",
-    "address": {
-      "street": "Kyle Field",
-      "city": "College Station",
-      "state": "TX",
-      "zip": "00000"
-    },
-    "birthday": "1869-08-01",
-    "tags": [
-
-    ],
-    "favorite": false,
-    "created_at": "2026-09-14T22:41:03-05:00",
-    "updated_at": "2026-09-14T22:42:30-05:00"
-  },
-  {
     "id": 1,
-    "name": "John Doe",
+    "name": "Patrick Mahomes",
     "phone": {
-      "mobile": "123-456-7890",
+      "mobile": "555-520-8145",
       "home": null,
       "work": null
     },
-    "email": "john.doe@example.com",
+    "email": "patrick.mahomes@nfl.com",
     "address": {
-      "street": "123 Main St",
+      "street": "548 NFL Drive",
       "city": "San Antonio",
       "state": "TX",
-      "zip": "78201"
+      "zip": "78255"
     },
-    "birthday": "1990-05-14",
-    "tags": ["friend", "work"],
+    "birthday": "1995-01-15",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
     "favorite": false,
-    "created_at": "2026-09-12T21:51:00",
-    "updated_at": "2026-09-12T21:51:00"
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
   },
   {
-    "id": 1,
-    "name": "Jone Steele",
+    "id": 2,
+    "name": "Josh Allen",
     "phone": {
-      "mobile": "123-777-7890",
+      "mobile": "555-768-8299",
       "home": null,
       "work": null
     },
-    "email": "jone.steele@example.com",
+    "email": "josh.allen@nfl.com",
     "address": {
-      "street": "123 Cotton St",
-      "city": "Dallas",
+      "street": "906 NFL Drive",
+      "city": "San Antonio",
       "state": "TX",
-      "zip": "78551"
+      "zip": "78262"
     },
-    "birthday": "1990-09-27",
-    "tags": ["friend", "work"],
+    "birthday": "1996-02-07",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
     "favorite": false,
-    "created_at": "2026-09-12T21:51:00",
-      "updated_at": "2026-09-12T21:51:00"
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 3,
+    "name": "Jalen Hurts",
+    "phone": {
+      "mobile": "555-999-2383",
+      "home": null,
+      "work": null
+    },
+    "email": "jalen.hurts@nfl.com",
+    "address": {
+      "street": "347 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78294"
+    },
+    "birthday": "1998-03-15",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 4,
+    "name": "Christian McCaffrey",
+    "phone": {
+      "mobile": "555-316-4022",
+      "home": null,
+      "work": null
+    },
+    "email": "christian.mccaffrey@nfl.com",
+    "address": {
+      "street": "965 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78289"
+    },
+    "birthday": "1996-04-07",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 5,
+    "name": "Bijan Robinson",
+    "phone": {
+      "mobile": "555-872-5108",
+      "home": null,
+      "work": null
+    },
+    "email": "bijan.robinson@nfl.com",
+    "address": {
+      "street": "132 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78253"
+    },
+    "birthday": "2002-05-22",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 6,
+    "name": "Justin Jefferson",
+    "phone": {
+      "mobile": "555-692-9370",
+      "home": null,
+      "work": null
+    },
+    "email": "justin.jefferson@nfl.com",
+    "address": {
+      "street": "865 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78220"
+    },
+    "birthday": "1999-06-16",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 7,
+    "name": "CeeDee Lamb",
+    "phone": {
+      "mobile": "555-464-7580",
+      "home": null,
+      "work": null
+    },
+    "email": "ceedee.lamb@nfl.com",
+    "address": {
+      "street": "502 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78273"
+    },
+    "birthday": "1999-07-08",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 8,
+    "name": "Tyreek Hill",
+    "phone": {
+      "mobile": "555-716-1015",
+      "home": null,
+      "work": null
+    },
+    "email": "tyreek.hill@nfl.com",
+    "address": {
+      "street": "353 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78250"
+    },
+    "birthday": "1994-08-01",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 9,
+    "name": "Amon-Ra St. Brown",
+    "phone": {
+      "mobile": "555-583-8421",
+      "home": null,
+      "work": null
+    },
+    "email": "amon-ra.st..brown@nfl.com",
+    "address": {
+      "street": "385 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78288"
+    },
+    "birthday": "1999-09-24",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 10,
+    "name": "Saquon Barkley",
+    "phone": {
+      "mobile": "555-419-1379",
+      "home": null,
+      "work": null
+    },
+    "email": "saquon.barkley@nfl.com",
+    "address": {
+      "street": "231 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78248"
+    },
+    "birthday": "1997-10-09",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 11,
+    "name": "George Kittle",
+    "phone": {
+      "mobile": "555-382-4151",
+      "home": null,
+      "work": null
+    },
+    "email": "george.kittle@nfl.com",
+    "address": {
+      "street": "866 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78277"
+    },
+    "birthday": "1993-11-09",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 12,
+    "name": "Travis Kelce",
+    "phone": {
+      "mobile": "555-566-4099",
+      "home": null,
+      "work": null
+    },
+    "email": "travis.kelce@nfl.com",
+    "address": {
+      "street": "377 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78233"
+    },
+    "birthday": "1989-12-05",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:15-05:00",
+    "updated_at": "2026-09-28T03:06:15-05:00"
+  },
+  {
+    "id": 13,
+    "name": "Patrick Mahomes",
+    "phone": {
+      "mobile": "555-378-6730",
+      "home": null,
+      "work": null
+    },
+    "email": "patrick.mahomes@nfl.com",
+    "address": {
+      "street": "771 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78229"
+    },
+    "birthday": "1995-01-15",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 14,
+    "name": "Josh Allen",
+    "phone": {
+      "mobile": "555-105-5179",
+      "home": null,
+      "work": null
+    },
+    "email": "josh.allen@nfl.com",
+    "address": {
+      "street": "419 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78251"
+    },
+    "birthday": "1996-02-07",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 15,
+    "name": "Jalen Hurts",
+    "phone": {
+      "mobile": "555-290-2727",
+      "home": null,
+      "work": null
+    },
+    "email": "jalen.hurts@nfl.com",
+    "address": {
+      "street": "106 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78260"
+    },
+    "birthday": "1998-03-15",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 16,
+    "name": "Christian McCaffrey",
+    "phone": {
+      "mobile": "555-591-7713",
+      "home": null,
+      "work": null
+    },
+    "email": "christian.mccaffrey@nfl.com",
+    "address": {
+      "street": "697 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78239"
+    },
+    "birthday": "1996-04-07",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 17,
+    "name": "Bijan Robinson",
+    "phone": {
+      "mobile": "555-984-4429",
+      "home": null,
+      "work": null
+    },
+    "email": "bijan.robinson@nfl.com",
+    "address": {
+      "street": "554 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78251"
+    },
+    "birthday": "2002-05-22",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 18,
+    "name": "Justin Jefferson",
+    "phone": {
+      "mobile": "555-677-6542",
+      "home": null,
+      "work": null
+    },
+    "email": "justin.jefferson@nfl.com",
+    "address": {
+      "street": "653 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78279"
+    },
+    "birthday": "1999-06-16",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 19,
+    "name": "CeeDee Lamb",
+    "phone": {
+      "mobile": "555-307-8858",
+      "home": null,
+      "work": null
+    },
+    "email": "ceedee.lamb@nfl.com",
+    "address": {
+      "street": "129 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78244"
+    },
+    "birthday": "1999-07-08",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 20,
+    "name": "Tyreek Hill",
+    "phone": {
+      "mobile": "555-940-9848",
+      "home": null,
+      "work": null
+    },
+    "email": "tyreek.hill@nfl.com",
+    "address": {
+      "street": "199 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78239"
+    },
+    "birthday": "1994-08-01",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 21,
+    "name": "Amon-Ra St. Brown",
+    "phone": {
+      "mobile": "555-884-6891",
+      "home": null,
+      "work": null
+    },
+    "email": "amon-ra.st..brown@nfl.com",
+    "address": {
+      "street": "784 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78215"
+    },
+    "birthday": "1999-09-24",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 22,
+    "name": "Saquon Barkley",
+    "phone": {
+      "mobile": "555-365-6704",
+      "home": null,
+      "work": null
+    },
+    "email": "saquon.barkley@nfl.com",
+    "address": {
+      "street": "583 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78261"
+    },
+    "birthday": "1997-10-09",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 23,
+    "name": "George Kittle",
+    "phone": {
+      "mobile": "555-593-9554",
+      "home": null,
+      "work": null
+    },
+    "email": "george.kittle@nfl.com",
+    "address": {
+      "street": "229 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78297"
+    },
+    "birthday": "1993-11-09",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
+  },
+  {
+    "id": 24,
+    "name": "Travis Kelce",
+    "phone": {
+      "mobile": "555-831-3431",
+      "home": null,
+      "work": null
+    },
+    "email": "travis.kelce@nfl.com",
+    "address": {
+      "street": "387 NFL Drive",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip": "78243"
+    },
+    "birthday": "1989-12-05",
+    "tags": [
+      "NFL",
+      "Player",
+      "Favorite"
+    ],
+    "notes": "Auto-generated NFL contact for demo.",
+    "favorite": false,
+    "created_at": "2026-09-28T03:06:18-05:00",
+    "updated_at": "2026-09-28T03:06:18-05:00"
   }
 ]
