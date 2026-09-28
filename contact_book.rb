@@ -6,17 +6,11 @@ require "date"
 FILE = "contacts.json"
 
 def initialize_contact_file
-  unless File.exist?(FILE)
-    File.write(FILE, JSON.pretty_generate([]))
-  end
+  File.write(FILE, JSON.pretty_generate([])) unless File.exist?(FILE)
 end
 
 def load_contact_book
-  if File.exist?(FILE)
-    JSON.parse(File.read(FILE))
-  else
-    []
-  end
+  File.exist?(FILE) ? JSON.parse(File.read(FILE)) : []
 end
 
 def save_contact_book(contact_book)
@@ -51,32 +45,62 @@ def upcoming_birthdays(contact_book)
 end
 
 def todays_birthday(contact_book)
-    today = Date.today
-    contact_book.select do |c|
-        next false if c["birthday"].empty?
-        bday = Date.parse(c["birthday"])
-        bday.month == today.month && bday.day == today.day
-    end
+  today = Date.today
+  contact_book.select do |c|
+    next false if c["birthday"].nil? || c["birthday"].empty?
+    bday = Date.parse(c["birthday"])
+    bday.month == today.month && bday.day == today.day
+  end
+end
+
+def birthdays_this_month(contact_book)
+  month = Date.today.month
+  contact_book.select do |c|
+    next false if c["birthday"].nil? || c["birthday"].empty?
+    Date.parse(c["birthday"]).month == month
+  end
 end
 
 def set_contact_count(count)
-    count == 1 ? "1 contact" : "#{count} contacts"
+  count == 1 ? "1 contact" : "#{count} contacts"
 end
 
+def add_contact(contact_book, new_contact)
+  new_contact["id"] = next_id(contact_book)
+  new_contact["created_at"] = Time.now.iso8601
+  new_contact["updated_at"] = Time.now.iso8601
+
+  contact_book << new_contact
+  save_contact_book(contact_book)
+  contact_book
+end
+
+# Load contacts
 contact_book = load_contact_book
 
-# load today's birthday on launch
+# Birthday reminders
 todays_bdays = todays_birthday(contact_book)
+month_bdays  = birthdays_this_month(contact_book)
+
 if todays_bdays.any?
-  puts "++++++++++++++++++++++++++"  
+  puts "++++++++++++++++++++++++++"
   puts " 🎂 Today's Birthdays! 🎂 "
   puts "++++++++++++++++++++++++++"
-  todays_bdays.each do |c|
-    puts "#{c['name']} — #{c['birthday']}"
-  end
-  puts "++++++++++++++++++++++++++"  
+  todays_bdays.each { |c| puts "#{c['name']} — #{c['birthday']}" }
+  puts "++++++++++++++++++++++++++"
+
+elsif month_bdays.any?
+  puts "++++++++++++++++++++++++++"
+  puts " 🎉 Birthdays This Month 🎉 "
+  puts "++++++++++++++++++++++++++"
+  month_bdays.each { |c| puts "#{c['name']} — #{c['birthday']}" }
+  puts "++++++++++++++++++++++++++"
+
+else
+  puts "No daily reminders for today."
 end
 
+# MAIN MENU LOOP
 loop do
   puts ""
   puts "----------------------------"
@@ -96,42 +120,59 @@ loop do
   puts "0. Exit"
   puts ""
   print "Make a selection: "
-  puts ""
 
-  selection = gets.chomp.to_i
+  # FIXED INPUT SANITIZING
+  selection = gets.chomp.gsub(/\D/, "").to_i
 
-  # ----------------------------
-  # 1. LIST CONTACTS
-  # ----------------------------
+  ########################################
+  # OPTION 1 — LIST ALL CONTACTS
+  ########################################
   if selection == 1
     puts "Showing all contacts:"
     puts "===== Your gembook has #{set_contact_count(contact_book.length)} ====="
+
     contact_book.each_with_index do |contact, index|
       puts "#{index + 1}. #{contact['name']} (ID: #{contact['id']})"
       puts "   Mobile: #{contact['phone']['mobile']}"
       puts "   Home: #{contact['phone']['home']}" if contact['phone']['home']
       puts "   Work: #{contact['phone']['work']}" if contact['phone']['work']
       puts "   Email: #{contact['email']}"
-      puts "   Address: #{contact['address']['street']}, #{contact['address']['city']}, #{contact['address']['state']} #{contact['address']['zip']}"
+
+      addr = contact['address'] || {}
+      street = addr['street'].to_s.strip
+      city   = addr['city'].to_s.strip
+      state  = addr['state'].to_s.strip
+      zip    = addr['zip'].to_s.strip
+
+      street = "N/A" if street.empty?
+      city   = "N/A" if city.empty?
+      state  = "N/A" if state.empty?
+      zip    = "N/A" if zip.empty?
+
+      puts "   Address: #{street}, #{city}, #{state} #{zip}"
+
       puts "   Birthday: #{contact['birthday']}"
       age = age_from_birthday(contact['birthday'])
       puts "   Age: #{age}" if age
-      puts "   Tags: #{contact['tags'].join(', ')}"
+
+      tags = Array(contact['tags'])
+      puts "   Tags: #{tags.empty? ? 'None' : tags.join(', ')}"
+
       puts "   Notes: #{contact['notes']}" if contact['notes'] && !contact['notes'].empty?
       puts ""
     end
 
-  # ----------------------------
-  # 2. ADD CONTACT
-  # ----------------------------
+  ########################################
+  # OPTION 2 — ADD CONTACT
+  ########################################
   elsif selection == 2
     puts ""
     print "Enter name: "
     name = gets.chomp
 
     if name.strip.empty?
-        puts "Name cannot be blank. Please try again."
-        next
+      puts "Name cannot be blank. Please try again."
+      next
     end
 
     print "Enter mobile phone: "
@@ -190,9 +231,9 @@ loop do
     puts ""
     puts "New contact added successfully!"
 
-  # ----------------------------
-  # 3. EDIT CONTACT
-  # ----------------------------
+  ########################################
+  # OPTION 3 — EDIT CONTACT
+  ########################################
   elsif selection == 3
     puts "Which contact would you like to edit?"
     contact_book.each_with_index do |contact, index|
@@ -261,9 +302,9 @@ loop do
       puts "Contact updated!"
     end
 
-  # ----------------------------
-  # 4. DELETE CONTACT
-  # ----------------------------
+  ########################################
+  # OPTION 4 — DELETE CONTACT
+  ########################################
   elsif selection == 4
     puts "Which contact would you like to delete?"
     contact_book.each_with_index do |contact, index|
@@ -276,21 +317,21 @@ loop do
     if idx < 0 || idx >= contact_book.length
       puts "Invalid selection."
       next
-    end 
+    end
 
     puts "Are you sure you want to delete #{contact_book[idx]['name']}? (y/n)"
     confirmation = gets.chomp.downcase
     if confirmation == 'y' || confirmation == 'yes'
-        deleted = contact_book.delete_at(idx)
-        save_contact_book(contact_book)
-        puts "Deleted #{deleted['name']} from gembook"
-    else 
-        puts "Deletion cancelled."
+      deleted = contact_book.delete_at(idx)
+      save_contact_book(contact_book)
+      puts "Deleted #{deleted['name']} from gembook"
+    else
+      puts "Deletion cancelled."
     end
 
-  # ----------------------------
-  # 5. SEARCH CONTACTS
-  # ----------------------------
+  ########################################
+  # OPTION 5 — SEARCH CONTACTS
+  ########################################
   elsif selection == 5
     print "Enter search term (name, phone, email, address, tag, birthday, notes): "
     term = gets.chomp.downcase
@@ -309,7 +350,7 @@ loop do
         contact['birthday'],
         contact['notes'],
         contact['tags'].join(" ")
-      ].compact.any? { |field| field.downcase.include?(term) }
+      ].compact.any? { |field| field.to_s.downcase.include?(term) }
     end
 
     if results.empty?
@@ -332,13 +373,34 @@ loop do
       end
     end
 
-  # ----------------------------
-  # 6. EXPORT CSV
-  # ----------------------------
+  ########################################
+  # OPTION 6 — EXPORT CSV
+  ########################################
   elsif selection == 6
     CSV.open("contacts_export.csv", "w") do |csv|
-      csv << ["id", "name", "mobile", "home", "work", "email", "street", "city", "state", "zip", "birthday", "tags", "notes"]
+      csv << ["id", "name", "mobile", "home", "work", "email",
+              "street", "city", "state", "zip",
+              "birthday", "tags", "notes"]
+
       contact_book.each do |c|
+        addr = c["address"] || {}
+
+        street = addr["street"].to_s.strip
+        city   = addr["city"].to_s.strip
+        state  = addr["state"].to_s.strip
+        zip    = addr["zip"].to_s.strip
+
+        street = "N/A" if street.empty?
+        city   = "N/A" if city.empty?
+        state  = "N/A" if state.empty?
+        zip    = "N/A" if zip.empty?
+
+        birthday = c["birthday"].to_s.strip
+        birthday = "N/A" if birthday.empty?
+
+        tags = Array(c["tags"]).join(";")
+        notes = c["notes"].to_s
+
         csv << [
           c["id"],
           c["name"],
@@ -346,21 +408,22 @@ loop do
           c["phone"]["home"],
           c["phone"]["work"],
           c["email"],
-          c["address"]["street"],
-          c["address"]["city"],
-          c["address"]["state"],
-          c["address"]["zip"],
-          c["birthday"],
-          c["tags"].join(";"),
-          c["notes"]
+          street,
+          city,
+          state,
+          zip,
+          birthday,
+          tags,
+          notes
         ]
       end
     end
+
     puts "Contacts exported to contacts_export.csv!"
 
-  # ----------------------------
-  # 7. IMPORT CSV
-  # ----------------------------
+  ########################################
+  # OPTION 7 — IMPORT CSV
+  ########################################
   elsif selection == 7
     if File.exist?("contacts_import.csv")
       CSV.foreach("contacts_import.csv", headers: true) do |row|
@@ -394,9 +457,9 @@ loop do
       puts "contacts_import.csv not found!"
     end
 
-  # ----------------------------
-  # 8. SORT CONTACTS
-  # ----------------------------
+  ########################################
+  # OPTION 8 — SORT CONTACTS
+  ########################################
   elsif selection == 8
     puts ""
     puts "Sort contacts by:"
@@ -404,27 +467,36 @@ loop do
     puts "2. City (A–Z)"
     # puts "3. Birthday (oldest → youngest)"
     print "Choose: "
-    sort_choice = gets.chomp.to_i
+    sort_choice = gets.chomp.gsub(/\D/, "").to_i
 
     case sort_choice
     when 1
-      contact_book.sort_by! { |c| c["name"].downcase }
+      contact_book.sort_by! { |c| c["name"].to_s.downcase }
       puts "Sorted by name!"
+
     when 2
-      contact_book.sort_by! { |c| c["address"]["city"].downcase }
+      contact_book.sort_by! do |c|
+        city = c["address"]["city"].to_s.strip
+        city.empty? ? "zzz" : city.downcase
+      end
       puts "Sorted by city!"
-    # when 3
-    #   contact_book.sort_by! { |c| Date.parse(c["birthday"]) }
-    #   puts "Sorted by birthday!"
+
+    when 3
+      contact_book.sort_by! do |c|
+        bday = c["birthday"].to_s.strip
+        bday.empty? ? Date.new(9999,12,31) : Date.parse(bday)
+      end
+      puts "Sorted by birthday!"
+
     else
       puts "Invalid sort option."
     end
 
     save_contact_book(contact_book)
 
-  # ----------------------------
-  # 9. UPCOMING BIRTHDAYS
-  # ----------------------------
+  ########################################
+  # OPTION 9 — UPCOMING BIRTHDAYS
+  ########################################
   elsif selection == 9
     puts "Upcoming birthdays (next 30 days):"
     upcoming = upcoming_birthdays(contact_book)
@@ -441,13 +513,16 @@ loop do
       end
     end
 
-  # ----------------------------
-  # EXIT
-  # ----------------------------
+  ########################################
+  # OPTION 0 — EXIT
+  ########################################
   elsif selection == 0
     puts "Leaving Gembooks. Goodbye!"
     break
 
+  ########################################
+  # INVALID OPTION
+  ########################################
   else
     puts "Invalid selection. Please select another option."
   end
