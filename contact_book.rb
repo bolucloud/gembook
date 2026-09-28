@@ -129,6 +129,11 @@ loop do
     print "Enter name: "
     name = gets.chomp
 
+    if name.strip.empty?
+        puts "Name cannot be blank. Please try again."
+        next
+    end
+
     print "Enter mobile phone: "
     mobile = gets.chomp
 
