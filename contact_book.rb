@@ -465,7 +465,7 @@ loop do
     puts "Sort contacts by:"
     puts "1. Name (A–Z)"
     puts "2. City (A–Z)"
-    puts "3. Birthday (oldest → youngest)"
+    # puts "3. Birthday (oldest → youngest)"
     print "Choose: "
     sort_choice = gets.chomp.gsub(/\D/, "").to_i
 

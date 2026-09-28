@@ -1,69 +1,21 @@
-Gembooks – Ruby CLI Contact Manager
+# Gembook
+
 Gembooks is a Ruby-based command-line contact manager designed to store, organize, search, sort, and export contact information. It uses JSON for persistent storage, supports CSV import/export, and includes birthday reminders and full RSpec test coverage.
 
 This project reflects real debugging, refactoring, and testing experience — including handling malformed data, fixing sorting logic, sanitizing input, and validating the entire system with automated tests.
 
-Features
-Contact Management
-Add new contacts
+--
+## Table of Contents
+- [Project structure](#project-structure)
+- [Installation and setup](#installation)
+- [Running the app](#running-the-app)
+- [Running tests and coverage report](#running-the-tests)
+- [Features](#features)
+- [Limitations](#limitations)
+- [Team Members](#team-members)
 
-Edit existing contacts
-
-Delete contacts
-
-Search by name, phone, email, address, tags, notes, or birthday
-
-Sorting
-Sort contacts by Name (A–Z)
-
-Sort contacts by City (A–Z)
-
-Sort contacts by Birthday (oldest → youngest)
-
-Safe handling of missing or malformed fields
-
-Data Storage
-Contacts stored in contacts.json
-
-Auto-updates timestamps (created_at, updated_at)
-
-CSV Support
-Export contacts to contacts_export.csv
-
-Import contacts from contacts_import.csv
-
-Handles missing fields safely
-
-Compatible with GitHub file previews
-
-Birthday Tools
-Today’s birthdays
-
-Birthdays this month
-
-Upcoming birthdays (next 30 days)
-
-RSpec Tested
-All core functions validated with:
-
-Code
-13 examples, 0 failures
-NFL Contact Dataset (Demo)
-This project includes a demo dataset of NFL players to test:
-
-Sorting
-
-Searching
-
-CSV export
-
-Address handling
-
-Birthday reminders
-
-The dataset helped uncover real-world issues like malformed addresses, nil values, and inconsistent fields — all of which were fixed during refactoring.
-
-Project Structure
+--
+## Project Structure
 Code
 gembooks/
 │
@@ -74,24 +26,40 @@ gembooks/
 │   ├── contact_book_spec.rb
 │   └── other specs...
 └── README.md              # Project documentation
-Installation
-Requirements
-Ruby 3.x recommended
 
-RSpec installed (gem install rspec)
+--
+### Installation
+##### Requirements
+- **Ruby** 3.2 or higher
+- **RSpec** 
+- **Command line Terminal**
 
-Clone the repository
-Code
-git clone https://github.com/YOURNAME/gembooks.git
-cd gembooks
-Running the Application
-Start the CLI:
+##### Running the App
+Clone the github repository at https://github.com/bolucloud/gembook
 
-Code
+```bash
+git clone https://github.com/bolucloud/gembook
+cd gembook
+```
+
+Once in the gembook folder, run
+```bash
 ruby contact_book.rb
-You’ll see:
+```
 
-Code
+You'll see the main menu with today's birthday reminder popping up if a there's a birthday today.
+```
+++++++++++++++++++++++++++
+ 🎂 Today's Birthdays! 🎂 
+++++++++++++++++++++++++++
+Jone Steele — 1990-09-27
+++++++++++++++++++++++++++
+
+----------------------------
+Welcome to Gembooks!
+PLEASE SELECT AN OPTION:
+----------------------------
+
 1. List all contacts
 2. Add a new contact
 3. Edit a contact
@@ -102,51 +70,55 @@ Code
 8. Sort contacts
 9. Upcoming birthdays
 0. Exit
-Running Tests
-Execute the full RSpec suite:
 
-Code
-rspec
+Make a selection: 
+```
+Use the numbers to select an option to continue using the app.
+
+##### Running the Tests
+RSpec needs to be installed to run the tests. Do this by running command
+```bash
+gem install rspec
+```
+After installation, can run the tests in the spec folder with the command
+```bash
+rspec spec/<<file name>>
+```
+so for example
+```bash
+rspec spec/add_contact_spec.rb
+```
+or 
+```bash
+rspec spec/search_spec.rb
+```
 Expected output:
 
 Code
 13 examples, 0 failures
 This confirms the application is stable and all core functions behave correctly.
 
-CSV Export Example
-Running Option 6 generates:
+--
+### Features
+- **List all contacts** - list all contacts in the gembook
+- **Add contact** - add name, address, phone number, birthday, and notes of a new contact
+- **Edit contact** - update any field for an existing contact
+- **Delete contact** - delete a contact from gembook
+- **Search for contact** - search contacts by any attribute (name, phone, email, address, tags, notes, or birthday)
+- **Export contacts** - export csv of entire contact list
+- **Import contacts** - import csv consisting of contacts
+- **Sort contacts** - sort list of contacts aphabetically by name or city
+- **Upcoming birthdays** - show contacts with upcoming birthdays in the next 30 days
+- **Birthday reminders** - see today's birthdays on app launch
+- **Data storage** - data stored in a single JSON file
+- **Timestamps** - dynamically updating time metadata such as created_at and updated_at
 
-Code
-contacts_export.csv
-GitHub will display this file directly, making it easy to showcase your data.
+--
+### Limitations
+- Unable to add more than 1 phone number
+- Unable to add more than a primary address
 
-Lessons Learned
-This project strengthened skills in:
-
-Ruby CLI development
-
-JSON and CSV data handling
-
-Defensive programming (nil checks, malformed data)
-
-Refactoring large files
-
-Writing safe sorting logic
-
-Automated testing with RSpec
-
-Debugging real-world issues
-
-Version control with Git & GitHub
-
-🌱 Future Improvements
-Favorite/starred contacts
-
-Colorized terminal output
-
-GUI version (Tk or Shoes)
-
-Web API (Sinatra or Rails)
-
-Database backend (SQLite/PostgreSQL)
->>>>>>> 17e235ce74a5362b07e0b58987b1bc194f152ca2
+--
+### Team Members
+- Benjamin Cerna
+- Bolu Owolana
