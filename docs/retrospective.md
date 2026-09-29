@@ -18,6 +18,8 @@
 - Installing Ruby version 3.2
 - Rubocop installation issues
 - Gracefully handling user inputs and error messages
+- Missing fields in older contacts causing later features to crash application
+- Importing and exporting CSV files
 
 
 ### Improvements
