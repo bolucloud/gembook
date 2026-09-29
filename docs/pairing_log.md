@@ -1,7 +1,7 @@
 # Pairing Log
 
 ## Session 1
-Driver: Bolu
+Driver: Bolu  
 Navigator: Benjamin  
 
 Work completed:
@@ -18,7 +18,7 @@ Notes
 --
 
 ## Session 2
-Driver: Benjamin
+Driver: Benjamin  
 Navigator: Bolu
 
 Work Completed:
@@ -34,7 +34,7 @@ Notes
 --
 
 ## Session 3
-Driver: Bolu
+Driver: Bolu  
 Navigator: Benjamin
 
 Work Completed:
@@ -49,7 +49,7 @@ Notes
 --
 
 ## Session 4
-Driver: Benjamin
+Driver: Benjamin  
 Navigator: Bolu
 
 Work Completed:
@@ -65,7 +65,7 @@ Notes
 --
 
 ## Session 5
-Driver: Bolu
+Driver: Bolu  
 Navigator: Benjamin
 
 Work Completed:
@@ -82,9 +82,9 @@ Notes
 -- 
 
 ## Session 6
-Driver: Benjamin
-Navigator: n/a
-Work Completed:
+Driver: Benjamin  
+Navigator: n/a  
+Work Completed:  
 During this session, I completed extensive debugging, testing, and merge‑resolution work to stabilize the Gembooks application and ensure all user stories were fully supported by working features. Below is a detailed summary of the work performed:
 - Executed a full manual functional test cycle across 7 major features:
   - List all contacts
