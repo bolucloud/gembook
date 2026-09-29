@@ -1,7 +1,7 @@
 # Pairing Log
 
 ## Session 1
-Driver: Bolu  
+Driver: Bolu
 Navigator: Benjamin  
 
 Work completed:
